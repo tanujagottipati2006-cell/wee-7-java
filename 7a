@@ -1,0 +1,25 @@
+
+import java.io.*;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+
+public class FirstServlet extends HttpServlet
+{
+    public void doGet(HttpServletRequest req,
+                      HttpServletResponse res)
+                      throws ServletException, IOException
+    {
+        res.setContentType("text/html");
+
+        PrintWriter pw = res.getWriter();
+
+        pw.println("<h2>This is First Servlet</h2>");
+
+        RequestDispatcher rd =
+            req.getRequestDispatcher("second");
+
+        rd.include(req, res);
+
+        pw.println("<h3>Back to First Servlet</h3>");
+    }
+}
